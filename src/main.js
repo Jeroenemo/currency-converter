@@ -27,6 +27,10 @@ $(document).ready(function() {
           throw Error(`ExchangeRate API error: ${currencyResponse.message}`);
         }
         const exchangeRate = currencyResponse.conversion_rates;
+        $.each(exchangeRate, function(key, value) {
+          $('#currencyType').append($('<option></option>').attr('value', value).text(key));
+        })
+    
         displayCurrencyConversion(exchangeRate, amount);
       })
       .catch(function(error) {
