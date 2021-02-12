@@ -20,6 +20,7 @@ const displayFlag = (baseCountryCode, targetCountryCode) => {
   $('.show-flag').append(`<img src='https://www.countryflags.io/${baseCountryCode}/shiny/64.png'> 
   <img src='https://www.countryflags.io/${targetCountryCode}/shiny/64.png'>`);
 };
+
 const clearFields = () => {
   $('#currencyAmount').val("");
   $('.show-flag').empty();
@@ -33,6 +34,11 @@ const displayErrors = (error) => {
 $(document).ready(function() {
   appendCurrencyKeys();
   $('#currencyRate').on('click', function() {
+    const input = $('#currencyAmount').val();
+    if (input  === '') {
+      alert("Please enter a monetary value to convert");
+      return false;
+    }
     let amount = parseFloat($('#currencyAmount').val());
     let fromCurrency = $('#fromCurrencyType').val();
     let toCurrency = $('#toCurrencyType').val();
