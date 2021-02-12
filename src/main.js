@@ -13,11 +13,13 @@ const displayCurrencyConversion = (amount, conversionRate) => {
   const convertedAmount = (amount * conversionRate).toFixed(2);
   $('.show-currency').text(`Conversion is ${convertedAmount}`);
 };
-const displayFlag = (countryCode) => {
-  $('.show-flag').append(`<img src='https://www.countryflags.io/${countryCode}/flat/64.png'>`)
+const displayFlag = (baseCountryCode, targetCountryCode) => {
+  $('.show-flag').append(`<img src='https://www.countryflags.io/${baseCountryCode}/flat/64.png'> 
+  <img src='https://www.countryflags.io/${targetCountryCode}/flat/64.png'>`)
 }
 const clearFields = () => {
   $('#currencyAmount').val("");
+  $('.show-flag').empty();
   $('.show-errors').val("");
 };
 const displayErrors = (error) => {
@@ -37,9 +39,10 @@ $(document).ready(function() {
           throw Error(`ExchangeRate API error: ${currencyResponse.message}`);
         }
         const conversionRate = currencyResponse.conversion_rate;
-        const countryCode = currencyResponse.target_code.slice(0,2);
+        const baseCountryCode = currencyResponse.base_code.slice(0,2);
+        const targetCountryCode = currencyResponse.target_code.slice(0,2);
         displayCurrencyConversion(amount, conversionRate);
-        displayFlag(countryCode)
+        displayFlag(baseCountryCode, targetCountryCode)
       })
       .catch(function(error) {
         displayErrors(error.message);
