@@ -33,7 +33,7 @@ const displayErrors = (error) => {
 
 $(document).ready(function() {
   appendCurrencyKeys();
-  $('#currencyRate').on('click', function() {
+  $('#convert').on('click', function() {
     const input = $('#currencyAmount').val();
     if (input  === '') {
       alert("Please enter a monetary value to convert");
@@ -57,5 +57,11 @@ $(document).ready(function() {
       .catch(function(error) {
         displayErrors(error.message);
       });
+      document.getElementById('flip-card').classList.toggle('do-flip')
+      
   });
+  $('#back').on('click', function() {
+    document.getElementById('flip-card').classList.toggle('do-flip')
+  });
+
 });
