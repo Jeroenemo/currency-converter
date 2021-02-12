@@ -3,21 +3,22 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import CurrencyService from './services/currency-service.js';
+
 const clearFields = () => {
-  $('#currency').val("");
+  $('#currencyAmount').val("");
   $('.show-errors').val("");
 };
 const displayErrors = (error) => {
   $('.show-errors').text(`${error}`);
 };
 const displayCurrencyConversion = (exchangeRate, amount) => {
-  // console.log(exchangeRate)
   const convertedAmount = (amount * exchangeRate.AED);
   $('.show-currency').text(`Conversion is ${convertedAmount}`);
 };
+
 $(document).ready(function() {
   $('#currencyRate').on('click', function() {
-    let amount = $('#currency').val();
+    let amount = $('#currencyAmount').val();
     clearFields();
     CurrencyService.getCurrency()
       .then(function(currencyResponse) {
