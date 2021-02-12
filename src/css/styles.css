@@ -1,11 +1,13 @@
-html * {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.jumbotron {
+  text-align: center;
+
+  margin: 4% 20%;
 }
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+
+.container {
+  margin-top: 5vh;
+  margin-left: 35vw;
+  position: relative;
 }
 #flip-card {
   width: 30%;
@@ -13,8 +15,6 @@ html * {
   min-width: 500px;
   min-height: 550px;
   text-align: center;
-  margin-left: 18%;
-  position: absolute;
   -o-transition: all 1s ease-in-out;
   -webkit-transition: all 1s ease-in-out;
   -ms-transition: all 1s ease-in-out;
@@ -34,7 +34,7 @@ html * {
 #flip-card .flip-card-front, #flip-card .flip-card-back{
   border-radius: 50px;
   width: 100%;
-  height: 45%;
+  height: 100%;
   position: absolute;
   -o-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
