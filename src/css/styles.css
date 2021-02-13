@@ -1,7 +1,28 @@
 .jumbotron {
   text-align: center;
   margin: 4% 20%;
+  font-family: 'Fredoka One', cursive;
 }
 .container .jumbotron {
+  font-size: 1.2rem;
   min-height: 400px;
+}
+h1 {
+  font-size: 4rem;
+}
+.button, #back {
+  font-size: 1.1rem;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: 1px solid black;
+  background-color: black;
+  color: white
+  ;
+  cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
+}
+.button:hover, #back:hover {
+  background-color: rgb(67, 67, 67);
 }
