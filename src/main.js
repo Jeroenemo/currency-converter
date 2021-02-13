@@ -10,27 +10,22 @@ const appendCurrencyKeys = () => {
     $('#fromCurrencyType, #toCurrencyType').append($('<option>', {value : key }).text(value));
   });
 };
-
 const displayCurrency = (amount, currencyResponse) => {
-  const convertedAmount = (amount * currencyResponse.conversion_rate).toFixed(2);
-  $('.show-currency').text(`${amount} ${currencyResponse.base_code} = ${convertedAmount} ${currencyResponse.target_code}`);
+  const convertedAmount = (amount * currencyResponse.conversion_rate);
+  $('.show-currency').text(`${amount.toFixed(2)} ${currencyResponse.base_code} = ${convertedAmount.toFixed(2)} ${currencyResponse.target_code}`);
 };
-
 const displayFlag = (baseCountryCode, targetCountryCode) => {
   $('.show-currency').prepend(`<img src='https://www.countryflags.io/${baseCountryCode}/shiny/64.png'>`) 
   $('.show-currency').append(`<img src='https://www.countryflags.io/${targetCountryCode}/shiny/64.png'>`);
 };
-
 const clearFields = () => {
   $('#currencyAmount').val("");
   $('.show-flag').empty();
   $('.show-errors').val("");
 };
-
 const displayErrors = (error) => {
   $('.show-errors').text(`${error}`);
 };
-
 $(document).ready(function() {
   appendCurrencyKeys();
   $('#convert').on('click', function() {
@@ -57,10 +52,8 @@ $(document).ready(function() {
         displayErrors(error.message);
       });
       document.getElementById('flip-card').classList.toggle('do-flip')
-      
   });
   $('#back').on('click', function() {
     document.getElementById('flip-card').classList.toggle('do-flip')
   });
-
 });
