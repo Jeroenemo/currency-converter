@@ -13,13 +13,19 @@ img {
   margin: 4% 20%;
   font-family: 'Fredoka One', cursive;
 }
+.jumbotron .form-fields {
+  text-align: left;
+  display: grid;
+  justify-content: center;
+}
 .container .jumbotron {
   font-size: 1.2rem;
-  min-height: 400px;
+  min-height: 439px;
 }
 h1 {
   font-size: 4rem;
 }
+
 .button {
   font-size: 1.1rem;
   border-radius: 8px;
