@@ -11,14 +11,14 @@ const appendCurrencyKeys = () => {
   });
 };
 
-const displayCurrencyConversion = (amount, conversionRate) => {
-  const convertedAmount = (amount * conversionRate).toFixed(2);
-  $('.show-currency').text(`Conversion is ${convertedAmount}`);
+const displayCurrency = (amount, currencyResponse) => {
+  const convertedAmount = (amount * currencyResponse.conversion_rate).toFixed(2);
+  $('.show-currency').text(`${amount} ${currencyResponse.base_code} = ${convertedAmount} ${currencyResponse.target_code}`);
 };
 
 const displayFlag = (baseCountryCode, targetCountryCode) => {
-  $('.show-flag').append(`<img src='https://www.countryflags.io/${baseCountryCode}/shiny/64.png'> 
-  <img src='https://www.countryflags.io/${targetCountryCode}/shiny/64.png'>`);
+  $('.show-currency').prepend(`<img src='https://www.countryflags.io/${baseCountryCode}/shiny/64.png'>`) 
+  $('.show-currency').append(`<img src='https://www.countryflags.io/${targetCountryCode}/shiny/64.png'>`);
 };
 
 const clearFields = () => {
@@ -48,10 +48,9 @@ $(document).ready(function() {
         if (currencyResponse instanceof Error) {
           throw Error(`ExchangeRate API error: ${currencyResponse.message}`);
         }
-        const conversionRate = currencyResponse.conversion_rate;
         const baseCountryCode = currencyResponse.base_code.slice(0,2);
         const targetCountryCode = currencyResponse.target_code.slice(0,2);
-        displayCurrencyConversion(amount, conversionRate);
+        displayCurrency(amount, currencyResponse);
         displayFlag(baseCountryCode, targetCountryCode);
       })
       .catch(function(error) {
