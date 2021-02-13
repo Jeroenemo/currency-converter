@@ -1,3 +1,10 @@
+body {
+  background-image: url('../assets/images/currency.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 .jumbotron {
   text-align: center;
   margin: 4% 20%;
