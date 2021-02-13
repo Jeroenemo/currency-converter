@@ -15,7 +15,7 @@ const displayCurrency = (amount, currencyResponse) => {
   $('.show-currency').text(`${amount.toFixed(2)} ${currencyResponse.base_code} = ${convertedAmount.toFixed(2)} ${currencyResponse.target_code}`);
 };
 const displayFlag = (baseCountryCode, targetCountryCode) => {
-  $('.show-currency').prepend(`<img src='https://www.countryflags.io/${baseCountryCode}/shiny/64.png'>`) 
+  $('.show-currency').prepend(`<img src='https://www.countryflags.io/${baseCountryCode}/shiny/64.png'>`);
   $('.show-currency').append(`<img src='https://www.countryflags.io/${targetCountryCode}/shiny/64.png'>`);
 };
 const clearFields = () => {
@@ -51,9 +51,5 @@ $(document).ready(function() {
       .catch(function(error) {
         displayErrors(error.message);
       });
-      document.getElementById('flip-card').classList.toggle('do-flip')
-  });
-  $('#back').on('click', function() {
-    document.getElementById('flip-card').classList.toggle('do-flip')
   });
 });
